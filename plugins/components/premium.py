@@ -71,7 +71,8 @@ async def myplan(client, message):
         time_left_str = f"{days} days, {hours} hours, {minutes} minutes"
         await message.reply_text(f"#Premium_user_data:\n\n👤 User: {user}\n\n🪙 User Id: <code>{user_id}</code>\n\n⏰ Time Left: {time_left_str}\n\n⌛️ Expiry: {expiry_str_in_ist}.")   
     else:
-        btn = [                                
+        btn = [   
+            [InlineKeyboardButton("⇲ ɢᴇᴛ ꜰʀᴇᴇ ᴛʀᴀɪʟ", callback_data="give_trial")],
             [InlineKeyboardButton('🤞🏻ɢᴇᴛ ʟᴏᴡ ᴘʀɪᴄᴇ ᴘʟᴀɴs 🍿', callback_data='plans')],
             [InlineKeyboardButton("⚠️ ᴄʟᴏsᴇ / ᴅᴇʟᴇᴛᴇ ⚠️", callback_data="close_data")]
         ]
@@ -114,8 +115,7 @@ async def plan(client, message):
     else:
         user_info = f"{message.from_user.mention}"
     log_message = f"<b><u>🚫 ᴛʜɪs ᴜsᴇʀs ᴛʀʏ ᴛᴏ ᴄʜᴇᴄᴋ /plan</u> {temp.B_LINK}\n\n- ɪᴅ - `{user_id}`\n- ɴᴀᴍᴇ - {user_info}</b>"
-    btn = [
-        [InlineKeyboardButton("⇲ ɢᴇᴛ ꜰʀᴇᴇ ᴛʀᴀɪʟ", callback_data="give_trial")],
+    btn = [        
         [InlineKeyboardButton('🤞🏻ɢᴇᴛ ʟᴏᴡ ᴘʀɪᴄᴇ ᴘʟᴀɴs 🍿', callback_data='plans')],
         [
         InlineKeyboardButton("🗑 ᴄʟᴏsᴇ / ᴅᴇʟᴇᴛᴇ 🗑", callback_data="close_data")
