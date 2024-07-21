@@ -319,6 +319,21 @@ class Database:
             return True
         else:
             return False
+
+    async def check_trial_status(self, user_id):
+        user_data = await self.get_user(user_id)
+        if user_data:
+            return user_data.get("has_free_trial", False)
+        return False
+  
+    async def give_free_trial(self, user_id):
+        #await set_free_trial_status(user_id)
+        user_id = user_id
+        seconds = 5*60         
+        expiry_time = datetime.datetime.now() + datetime.timedelta(seconds=seconds)
+        user_data = {"id": user_id, "expiry_time": expiry_time, "has_free_trial": True}
+        await self.users.update_one({"id": user_id}, {"$set": user_data}, upsert=True)
+        
     async def movies_update_channel_id(self , id=None):
         if id is None:
             myLinks = await self.movies_update_channel.find_one({})
